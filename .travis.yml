@@ -17,5 +17,8 @@ install:
 script: # 集成脚本
   - overalls -project=$GOPATH/src/github.com/nanjingfm/bdd_demo -covermode=count -ignore='mock,.git,_vendor'
   - goveralls -coverprofile=overalls.coverprofile -service=travis-ci -repotoken $COVERALLS_TOKEN
-  - go test -race -coverprofile=coverage.txt -covermode=atomic # 注意要添加这一行，否则不会出现 codecov bot
+  - go test -race -coverprofile=coverage.txt -covermode=atomic
   - go test ./... -coverpkg=./...
+  -
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

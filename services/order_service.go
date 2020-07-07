@@ -14,6 +14,7 @@ type OrderService interface {
 	FindAllOrderByUserID(userID int) (models.Orders, error)
 }
 
+// NewOrderService new order service
 func NewOrderService() *orderService {
 	return &orderService{}
 }
@@ -24,6 +25,7 @@ type orderService struct {
 	orderRepository  repositories.OrderRepository
 }
 
+// SetOrderRepository set order Repository
 func (s *orderService) SetOrderRepository(r repositories.OrderRepository) {
 	s.orderRepository = r
 }
@@ -37,6 +39,7 @@ func (s *orderService) getOrderRepository() repositories.OrderRepository {
 	return s.orderRepository
 }
 
+// SetRestaurantClient set restaurant client
 func (s *orderService) SetRestaurantClient(c restaurant.Client) {
 	s.restaurantClient = c
 }
@@ -50,6 +53,7 @@ func (s *orderService) getRestaurantClient() restaurant.Client {
 	return s.restaurantClient
 }
 
+// FindAllOrderByUserID find order by user id
 func (s orderService) FindAllOrderByUserID(userID int) (models.Orders, error) {
 	orders, err := s.getOrderRepository().FindAllOrdersByUserID(userID)
 	if err != nil {

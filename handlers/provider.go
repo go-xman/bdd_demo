@@ -4,7 +4,6 @@ import (
 	"order/services"
 )
 
-
 type Provider struct {
 	orderService services.OrderService
 }
@@ -22,5 +21,3 @@ func (p *Provider) getOrderService() services.OrderService {
 	p.orderService = services.NewOrderService()
 	return p.orderService
 }
-
-
