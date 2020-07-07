@@ -10,7 +10,13 @@ notifications: # 每次构建的时候是否通知，如果不想收到通知，
 go:
   - 1.14.4
 
+install:
+  - go get github.com/go-playground/overalls
+  - go get github.com/mattn/goveralls
+
 script: # 集成脚本
+  - overalls -project=github.com/yangwenmai/how-to-add-badge-in-github-readme -covermode=count -ignore='.git,_vendor'
+  - goveralls -coverprofile=overalls.coverprofile -service=travis-ci -repotoken $COVERALLS_TOKEN
   - go test -race -coverprofile=coverage.txt -covermode=atomic # 注意要添加这一行，否则不会出现 codecov bot
   - go test ./... -coverpkg=./...
 
