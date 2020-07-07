@@ -82,23 +82,13 @@
 
 正常情况下，代码流程如下：
 
-```mermaid
-graph LR
-D[router] --> A[controller]
-A -->B[service]
-B --> C[dao]
-```
+![](https://bbk-images.oss-cn-shanghai.aliyuncs.com/typora/20200707210922.png)
 
 以往的代码都是相互耦合的，即controller和service耦合，service和dao耦合。
 
 耦合是不可能避免的，**但是需要把实现的耦合，转换成接口的耦合。**
 
-```mermaid
-graph LR
-D[router] --> A[controller provider]
-A -->B[service interface]
-B --> C[dao interface]
-```
+![](https://bbk-images.oss-cn-shanghai.aliyuncs.com/typora/20200707210909.png)
 
 通过接口耦合，就很容易在`test`的时候`mock`实现。
 
@@ -163,17 +153,7 @@ func (s orderService) FindAllOrderByUserID(userID int) (models.Orders, error) {
 
 先看下依赖关系
 
-```mermaid
-stateDiagram
-    [*] --> controllerFindOrdersForUser
-    controllerFindOrdersForUser --> servicesOrderService
-    servicesOrderService --> restaurantClient
-    servicesOrderService --> repositoriesOrderRepository
-    repositoriesOrderRepository --> db
-    restaurantClient --> api
-    api --> [*]
-    db --> [*]
-```
+![](https://bbk-images.oss-cn-shanghai.aliyuncs.com/typora/20200707211022.png)
 
 在做测试的时候需要先确定单个测试用例的测试范围。
 
