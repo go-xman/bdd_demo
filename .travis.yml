@@ -19,9 +19,3 @@ script: # 集成脚本
   - goveralls -coverprofile=overalls.coverprofile -service=travis-ci -repotoken $COVERALLS_TOKEN
   - go test -race -coverprofile=coverage.txt -covermode=atomic # 注意要添加这一行，否则不会出现 codecov bot
   - go test ./... -coverpkg=./...
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
-
-global:
-  secure: "ixeqFwVY2MXG4Cf16yPb/AhjpA7aOTeAsZdF9QGR7yJJ0dWvjJY8yM/TENKrJkU4IJAs4uNwoFlxnhBOUpOdUJzEjf0HP3oR5iqwLJejSWV04oikE3fKi4sBw/Kst67bxFCBpLS1PF1TkpgEH3UyLjh79NunEKTnxeepy2gvRpTPfHwgZn2RnG6/BAItZSKEv/qHkPziBC+X+S4IFLtcvYMtDqQNy4L+0qVw1URKLpME9C+0Zk86p387R/1PDtx3rFkI6bcse9WN2yt1yaxIM4PDtxKyg7LlcK52aK0K7d61BrwBYvUx5c8Ck4UloFYMCgIWNIfQXKgot16sOP8D+zzxI6eNRQCzZV8MQ3ew50NZmb0DAECwAFJlLx09WUOXL9u9BBdYnVhlSlzaBt85BIbL7YhA31jzkXCEmN1SwH7L70o6mmqF6Gvl7qOKZ5GZ9lbVK9dfqkBRqxeVeW8Tp8hpPi7bhT0jN1jAwLyYECxH6ptgDKRyjiiVdMjodUqMz09H8CoCNYatJq83Et5MzeRCjVqCTsLVrxjJs6Bp38yiFAccMq+gNqP79upDM1tpK5ZI3/H5kolyGKv1f732VTw9WrYL6JVxFTJLqV/ds/iQ0TX2iy2M7DgI5q80v0sTRTK9YiRmC7rzv0DsNhLl2hJhv1C3x6V52RdpC4bVBv4="
