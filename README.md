@@ -1,7 +1,8 @@
 # 单元测试
+[![Build Status](https://travis-ci.com/go-xman/bdd_demo.svg?branch=master)](https://travis-ci.com/go-xman/bdd_demo)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/73e5516d85e4439db7a1ef507bdfb9d1)](https://app.codacy.com/gh/go-xman/bdd_demo?utm_source=github.com&utm_medium=referral&utm_content=go-xman/bdd_demo&utm_campaign=Badge_Grade_Dashboard)
-[![Go Report Card](https://goreportcard.com/badge/github.com/nanjingfm/bdd_demo)](https://goreportcard.com/report/github.com/nanjingfm/bdd_demo)
-[![Coverage Status](https://coveralls.io/repos/github/nanjingfm/bdd_demo/badge.svg)](https://coveralls.io/github/nanjingfm/bdd_demo)
+[![Go Report Card](https://goreportcard.com/badge/github.com/go-xman/bdd_demo)](https://goreportcard.com/report/github.com/go-xman/bdd_demo)
+[![Coverage Status](https://coveralls.io/repos/github/go-xman/bdd_demo/badge.svg)](https://coveralls.io/github/go-xman/bdd_demo)
 ## 测试边界
 
 写代码是单元和分离的艺术。做好单元和分离，管理好抽象和实现，代码就可以测试。

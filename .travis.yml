@@ -21,4 +21,4 @@ script: # 集成脚本
   - go test ./... -coverpkg=./...
   -
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -Ls https://coverage.codacy.com/get.sh) 
