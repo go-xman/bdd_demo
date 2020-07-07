@@ -2,7 +2,7 @@
 // Source: context.go
 
 // Package handlers is a generated GoMock package.
-package handlers
+package mock
 
 import (
 	gin "github.com/gin-gonic/gin"

@@ -2,7 +2,7 @@
 // Source: order_repository.go
 
 // Package repositories is a generated GoMock package.
-package repositories
+package mock
 
 import (
 	gomock "github.com/golang/mock/gomock"

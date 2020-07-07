@@ -3,6 +3,7 @@ package handlers_test
 import (
 	"errors"
 	"order/handlers"
+	"order/mock"
 	"order/models"
 	"order/services"
 	"testing"
@@ -36,7 +37,7 @@ var _ = Describe("FindOrdersForUser", func() {
 	})
 	Describe("with an invalid ID", func() {
 		BeforeEach(func() {
-			mockContext := handlers.NewMockContext(ctrl)
+			mockContext := mock.NewMockContext(ctrl)
 			mockContext.EXPECT().Param(gomock.Eq("id")).Return("invalid_id")
 			mockContext.EXPECT().Status(gomock.Eq(400))
 			c = mockContext
@@ -50,12 +51,12 @@ var _ = Describe("FindOrdersForUser", func() {
 	Describe("with a valid ID", func() {
 		Describe("when an error is returned from the OrderService", func() {
 			BeforeEach(func() {
-				mockContext := handlers.NewMockContext(ctrl)
+				mockContext := mock.NewMockContext(ctrl)
 				mockContext.EXPECT().Param(gomock.Eq("id")).Return("5")
 				mockContext.EXPECT().Status(gomock.Eq(500))
 				c = mockContext
 
-				mockOrderService := services.NewMockOrderService(ctrl)
+				mockOrderService := mock.NewMockOrderService(ctrl)
 				mockOrderService.EXPECT().FindAllOrderByUserID(gomock.Eq(5)).Return(nil, errors.New("some error"))
 				orderService = mockOrderService
 			})
@@ -76,12 +77,12 @@ var _ = Describe("FindOrdersForUser", func() {
 					},
 				})
 
-				mockContext := handlers.NewMockContext(ctrl)
+				mockContext := mock.NewMockContext(ctrl)
 				mockContext.EXPECT().Param(gomock.Eq("id")).Return("5")
 				mockContext.EXPECT().JSON(gomock.Eq(200), gomock.Eq(orders))
 				c = mockContext
 
-				mockOrderService := services.NewMockOrderService(ctrl)
+				mockOrderService := mock.NewMockOrderService(ctrl)
 				mockOrderService.EXPECT().FindAllOrderByUserID(gomock.Eq(5)).Return(orders, error(nil))
 				orderService = mockOrderService
 			})

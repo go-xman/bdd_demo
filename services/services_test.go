@@ -2,6 +2,7 @@ package services_test
 
 import (
 	"order/clients/restaurant"
+	"order/mock"
 	"order/models"
 	"order/repositories"
 	"order/services"
@@ -43,7 +44,7 @@ var _ = Describe("Services", func() {
 	Describe("FindAllOrdersByUserID", func() {
 		Describe("with no records in the database", func() {
 			BeforeEach(func() {
-				orderRepoMock := repositories.NewMockOrderRepository(ctrl)
+				orderRepoMock := mock.NewMockOrderRepository(ctrl)
 				orderRepoMock.EXPECT().FindAllOrdersByUserID(gomock.Eq(userID))
 				orderRepo = orderRepoMock
 			})
@@ -72,7 +73,7 @@ var _ = Describe("Services", func() {
 					RestaurantID: 9,
 					PlacedAt:     time.Now().Add(-36 * time.Hour),
 				}
-				orderRepoMock := repositories.NewMockOrderRepository(ctrl)
+				orderRepoMock := mock.NewMockOrderRepository(ctrl)
 				orderRepoMock.EXPECT().FindAllOrdersByUserID(gomock.Eq(userID)).
 					Return(models.Orders{order1, order2}, error(nil))
 				orderRepo = orderRepoMock
@@ -80,7 +81,7 @@ var _ = Describe("Services", func() {
 
 			Describe("when not all Restaurants can be found", func() {
 				BeforeEach(func() {
-					restaurantClientMock := restaurant.NewMockClient(ctrl)
+					restaurantClientMock := mock.NewMockClient(ctrl)
 					restaurantClientMock.EXPECT().
 						GetRestaurantsByIDs([]int{8, 9}).
 						Return(models.Restaurants{}, error(nil))
@@ -104,7 +105,7 @@ var _ = Describe("Services", func() {
 						ID:   8,
 						Name: "KFC",
 					}
-					restaurantClientMock := restaurant.NewMockClient(ctrl)
+					restaurantClientMock := mock.NewMockClient(ctrl)
 					restaurantClientMock.EXPECT().
 						GetRestaurantsByIDs([]int{8, 9}).
 						Return(models.Restaurants{restaurant1, restaurant2}, nil)

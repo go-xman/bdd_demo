@@ -2,7 +2,7 @@
 // Source: client.go
 
 // Package restaurant is a generated GoMock package.
-package restaurant
+package mock
 
 import (
 	gomock "github.com/golang/mock/gomock"

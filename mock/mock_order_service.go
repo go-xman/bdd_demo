@@ -2,7 +2,7 @@
 // Source: order_service.go
 
 // Package services is a generated GoMock package.
-package services
+package mock
 
 import (
 	gomock "github.com/golang/mock/gomock"
