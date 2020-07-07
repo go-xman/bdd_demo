@@ -1,5 +1,6 @@
 # 单元测试
-
+[![Go Report Card](https://goreportcard.com/badge/github.com/nanjingfm/bdd_demo)](https://goreportcard.com/report/github.com/nanjingfm/bdd_demo)
+[![Coverage Status](https://coveralls.io/repos/github/nanjingfm/bdd_demo/badge.svg)](https://coveralls.io/github/nanjingfm/bdd_demo)
 ## 测试边界
 
 写代码是单元和分离的艺术。做好单元和分离，管理好抽象和实现，代码就可以测试。
