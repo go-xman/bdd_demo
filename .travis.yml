@@ -19,6 +19,6 @@ script: # 集成脚本
   - goveralls -coverprofile=overalls.coverprofile -service=travis-ci -repotoken $COVERALLS_TOKEN
   - go test -race -coverprofile=coverage.txt -covermode=atomic
   - go test ./... -coverpkg=./...
-  -
+
 after_success:
-  - bash <(curl -Ls https://coverage.codacy.com/get.sh) 
+  - bash <(curl -Ls https://coverage.codacy.com/get.sh)
